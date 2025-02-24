@@ -19,12 +19,6 @@ void setup() {
   }
   
   Serial.println("DFPlayer Mini iniciado correctamente.");
-  
-  // Configura el volumen (rango de 0 a 30)
-  myDFPlayer.volume(20);
-  
-  // Reproduce la primera pista al inicio
-  myDFPlayer.play(1);
   Serial.println("Reproduciendo pista 1");
   Serial.println("Comandos disponibles: 'n' para siguiente, 'p' para anterior o ingresa un número para reproducir esa pista.");
 }
@@ -32,6 +26,7 @@ void setup() {
 void loop() {
   if (Serial.available()) {
     // Lee la entrada del Monitor Serial hasta el salto de línea
+    Serial.println("Inicio del loop");
     String input = Serial.readStringUntil('\n');
     input.trim();  // Elimina espacios y saltos de línea innecesarios
     
