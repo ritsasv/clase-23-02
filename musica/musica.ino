@@ -6,7 +6,7 @@ SoftwareSerial mySoftwareSerial(10, 11);
 DFRobotDFPlayerMini myDFPlayer;
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
   Serial.println("Iniciando DFPlayer Mini...");
   
   // Inicia la comunicación por SoftwareSerial a 9600 baudios
@@ -18,15 +18,7 @@ void setup() {
     while (true); // Si falla la inicialización, detiene el programa
   }
   
-  Serial.println("DFPlayer Mini iniciado correctamente.");
-  
-  // Configura el volumen (rango de 0 a 30)
-  myDFPlayer.volume(20);
-  
-  // Reproduce la primera pista al inicio
-  myDFPlayer.play(1);
-  Serial.println("Reproduciendo pista 1");
-  Serial.println("Comandos disponibles: 'n' para siguiente, 'p' para anterior o ingresa un número para reproducir esa pista.");
+  Serial.println("DFPlayer Mini inicio");
 }
 
 void loop() {
