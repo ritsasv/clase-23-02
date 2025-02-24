@@ -10,7 +10,7 @@ void setup() {
   Serial.println("Iniciando DFPlayer Mini...");
   
   // Inicia la comunicación por SoftwareSerial a 9600 baudios
-  mySoftwareSerial.begin(9600);
+  mySoftwareSerial.begin(115200);
   
   // Inicializa el DFPlayer Mini
   if (!myDFPlayer.begin(mySoftwareSerial)) {
@@ -24,6 +24,7 @@ void setup() {
 void loop() {
   if (Serial.available()) {
     // Lee la entrada del Monitor Serial hasta el salto de línea
+    Serial.println("Ingresa la opcion");
     String input = Serial.readStringUntil('\n');
     input.trim();  // Elimina espacios y saltos de línea innecesarios
     
