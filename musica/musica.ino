@@ -6,11 +6,11 @@ SoftwareSerial mySoftwareSerial(10, 11);
 DFRobotDFPlayerMini myDFPlayer;
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial.println("Iniciando DFPlayer Mini...");
   
   // Inicia la comunicación por SoftwareSerial a 9600 baudios
-  mySoftwareSerial.begin(115200);
+  mySoftwareSerial.begin(9600);
   
   // Inicializa el DFPlayer Mini
   if (!myDFPlayer.begin(mySoftwareSerial)) {
@@ -18,13 +18,20 @@ void setup() {
     while (true); // Si falla la inicialización, detiene el programa
   }
   
-  Serial.println("DFPlayer Mini inicio");
+  Serial.println("DFPlayer Mini iniciado correctamente.");
+  
+  // Configura el volumen (rango de 0 a 30)
+  myDFPlayer.volume(20);
+  
+  // Reproduce la primera pista al inicio
+  myDFPlayer.play(1);
+  Serial.println("Reproduciendo pista 1");
+  Serial.println("Comandos disponibles: 'n' para siguiente, 'p' para anterior o ingresa un número para reproducir esa pista.");
 }
 
 void loop() {
   if (Serial.available()) {
     // Lee la entrada del Monitor Serial hasta el salto de línea
-    Serial.println("Ingresa la opcion");
     String input = Serial.readStringUntil('\n');
     input.trim();  // Elimina espacios y saltos de línea innecesarios
     
